@@ -10,5 +10,5 @@ function test(){
 	alert("../static/"+result+".jpg");
     console.log('11111');
 
-	$("#resultImg").attr("src","../static/"+result);
+	$("#resultImg").attr("src","../static/output/"+result);
 }
