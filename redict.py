@@ -6,8 +6,14 @@ from flask import Flask, request, render_template, abort
 import json, time, threading
 from gen_tagged_img import  gen_tagged_img
 
-app = Flask(__name__)
+class MyFlask(Flask):
+    def get_send_file_max_age(self, name):
+        if name.lower().endswith('.js'):
+            return 1
+        return Flask.get_send_file_max_age(self, name)
 
+
+app = MyFlask(__name__)
 
 @app.route('/')
 def hello_world():
@@ -37,7 +43,21 @@ def return_json():
         'c': [3, 4, 5]
     }
     return json.dumps(t)
+#上传后返回json
+@app.route("/upload_json", methods=['GET', 'POST'])
+def upload_json():
+    result = {
+        'result' : 1
+    }
+    file = request.files['upload_file']
+    img_id = gen_tagged_img(file,file.filename)
+    result['result'] = img_id
+    return json.dumps(result)
 
+@app.route("/show_result/<imgid>")
+def show_result(imgid):
+    print('result action')
+    return render_template('result.html',imgid = imgid)
 if __name__ == '__main__':
 
     app.run()

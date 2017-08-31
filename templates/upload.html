@@ -2,20 +2,86 @@
 <html>
 <head>
 <title>上传文件</title>
-
+<!--JS-->
+<script src="../static/jquery-3.2.1.js"></script>
+<script src="../static/js/upload.js"></script>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta name="keywords" content="后台登录" />
-<!--Google Fonts-->
-<!--<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
---><!--Google Fonts-->
+<!--CSS-->
+<link rel="stylesheet" href="../static/css/bootstrap.css">  
 </head>
-<body>
-    <form action="/upload/img" method="post" enctype="multipart/form-data">
-    <input type="file" name="upload_file" />
-    <input type="submit" value="上传文件" />
-    </form>
+<body style="background-color: pink;">
+	<!--
+	<div id = "preview" style="width : 30%; height: 600px; float: left;">
+		<img style="width:100%; height:100%;" src=""  id="preImg"/>
+	</div>
+	<div id = "after" style="width : 30%; height: 600px; float: left;">
+		<img style="width:100%; height:100%;" src=""  id="resultImg"/>
+
+	</div>
+	<br/>
+	<div>
+   	  <form action="" method="post" enctype="multipart/form-data" id="uploadForm" onchange="setImagePreview()">
+        <input type="file" name="upload_file" id="upload_file" onchange="preview(this)"  />
+      </form>
+	</div>
+    <div>
+      <button name="upload" onclick="upload()"> 上传</button>
+      <img src=""  id="inImg">
+	
+	  </img>
+	</div>
+	-->
+	<div class="container" style="background-color: pink;">
+	  <br/>
+	  <div class="row clearfix">
+		  
+		  <div class="col-md-6 column" style="text-align: center;">
+		  	  <h1>
+				  图片预览
+			  </h1>
+		  </div>
+		  <div class="col-md-6 column" style="text-align: center;">
+			  <h1>
+				  计算结果
+			  </h1>
+		  </div>
+		  
+	  </div>
+	  <br/>
+	  <div class="row clearfix">
+		  
+		  <div class="col-md-6 column"  id = "preview" style="text-align: center;">
+			  <img style="width:100%; height:100%;" src=""  id="preImg"/>
+		  </div>
+		  <div class="col-md-6 column" id = "after"  style="text-align: center;">
+			  <img style="width:100%; height:100%;" src=""  id="resultImg"/>
+		  </div>
+		  
+	  </div>
+	  <br/>
+	  <div class="row clearfix">
+		  <div class="col-md-2 column">
+		  </div>
+		  <div class="col-md-8 column" style="text-align:center;">
+			 <!--	
+			 <button type="button" class="btn btn-lg btn-block btn-primary">选择图片</button> 
+			 -->
+			  <form action="" method="post" enctype="multipart/form-data" id="uploadForm" onchange="setImagePreview()">
+        		  <input type="file" class="btn btn-lg btn-block btn-primary" name="upload_file"
+        		   id="upload_file" onchange="preview(this)"  />
+      		  </form>
+			   <br/>
+			  <button type="button" class="btn btn-block btn-primary btn-lg" onclick="upload()">检测</button>
+		  </div>
+		  <div class="col-md-2 column">
+		  </div>
+	  </div>
+  </div>
+
 </body>
 </html>
+
